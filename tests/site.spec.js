@@ -425,3 +425,37 @@ test("green and deep heroes have a background photo; red heroes and red sections
     expect(await page.locator('section[data-field="red"] .cta-bg, .hero-bg[data-field="red"]').count()).toBe(0);
   }
 });
+
+test("events gallery shows every photo and opens a full-screen viewer", async ({ page, isMobile }, info) => {
+  test.setTimeout(120000);
+  await open(page, "/#events");
+  const gallery = page.getByTestId("gallery");
+  await gallery.scrollIntoViewIfNeeded();
+  const tiles = gallery.getByRole("button");
+  const count = await tiles.count();
+  expect(count).toBeGreaterThanOrEqual(18);
+  // Photos load lazily as they scroll into view: bring each one in and check it.
+  const imgs = gallery.locator("img");
+  for (let i = 0; i < count; i++) {
+    await imgs.nth(i).scrollIntoViewIfNeeded();
+    await expect.poll(() => imgs.nth(i).evaluate((el) => el.complete && el.naturalWidth > 0), { timeout: 10000 }).toBe(true);
+  }
+  await gallery.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1500);
+  await gallery.screenshot({ path: `${info.outputDir}/../../gallery-${isMobile ? "phone" : "desktop"}.png` });
+
+  // Open the second photo; step forwards and back; close with Escape.
+  await tiles.nth(1).click();
+  const box = page.getByTestId("lightbox");
+  await expect(box).toBeVisible();
+  await expect(box).toContainText(`2 / ${count}`);
+  await page.waitForTimeout(600);
+  await page.screenshot({ path: `${info.outputDir}/../../lightbox-${isMobile ? "phone" : "desktop"}.png` });
+  await page.keyboard.press("ArrowRight");
+  await expect(box).toContainText(`3 / ${count}`);
+  await box.getByRole("button", { name: "Previous photo" }).click();
+  await expect(box).toContainText(`2 / ${count}`);
+  await page.keyboard.press("Escape");
+  await expect(box).toBeHidden();
+  await expect(tiles.nth(1)).toBeFocused();   // focus returns to the photo that opened it
+});

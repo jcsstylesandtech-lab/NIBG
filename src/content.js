@@ -163,3 +163,28 @@ export const EVENT_FORMATS = [
   { kind: "Dialogue", name: "Conferences and business forums", text: "Sector-specific discussions on the opportunities shaping bilateral cooperation." },
   { kind: "Investment", name: "Roundtables and exhibitions", text: "Investment roundtables and exhibitions that put projects in front of decision-makers." },
 ];
+
+// Event gallery (Events page). To add a photo: put the file in
+// public/img/gallery/ and add a line here. `wide: true` for landscape photos.
+// Captions describe what is visible; add names, places or dates as needed.
+const gal = (name) => `${import.meta.env.BASE_URL}img/gallery/${name}`;
+export const GALLERY = [
+  { src: gal("plaque-award.jpg"), w: 960, h: 1280, caption: "Receiving a plaque on stage at the 41st Trade Expo Indonesia" },
+  { src: gal("team-lobby.jpg"), w: 1280, h: 960, wide: true, caption: "The NIBG team and guests" },
+  { src: gal("document-presentation.jpg"), w: 960, h: 1280, caption: "Presenting a signed document at an exhibition stand" },
+  { src: gal("partner-meeting.jpg"), w: 1280, h: 960, wide: true, caption: "A working meeting with Indonesian business partners" },
+  { src: gal("expo-stand.jpg"), w: 960, h: 1280, caption: "Meeting exhibitors at the expo" },
+  { src: gal("delegates-honoured.jpg"), w: 960, h: 1280, caption: "Delegates honoured on stage at Trade Expo Indonesia" },
+  { src: gal("honey-handshake.jpg"), w: 1050, h: 1400, caption: "Closing a honey supply conversation at the expo" },
+  { src: gal("expo-selfie.jpg"), w: 1400, h: 636, wide: true, caption: "On the expo floor with Indonesian partners" },
+  { src: gal("team-expo-entrance.jpg"), w: 1050, h: 1400, caption: "The NIBG team at the trade mission entrance" },
+  { src: gal("honey-samples.jpg"), w: 1400, h: 1050, wide: true, caption: "Indonesian honey samples for export" },
+  { src: gal("garut-pavilion.jpg"), w: 1050, h: 1400, caption: "Meeting food producers at the Garut regency pavilion" },
+  { src: gal("expo-honey-stand.jpg"), w: 1050, h: 1400, caption: "Sampling products at the honey exporter stand" },
+  { src: gal("cafe-meeting.jpg"), w: 1400, h: 1050, wide: true, caption: "A follow-up meeting with a business contact" },
+  { src: gal("booth-registration.jpg"), w: 1050, h: 1400, caption: "Signing up new contacts at an exhibitor booth" },
+  { src: gal("warehouse-visit.jpg"), w: 1050, h: 1400, caption: "Visiting a supplier's warehouse" },
+  { src: gal("team-dinner.jpg"), w: 1400, h: 1050, wide: true, caption: "Dinner with the team and partners" },
+  { src: gal("milkita-lollipops.jpg"), w: 1050, h: 1400, caption: "Indonesian confectionery samples" },
+  { src: gal("candy-samples.jpg"), w: 1050, h: 1400, caption: "Assorted candy samples from Indonesian makers" },
+];

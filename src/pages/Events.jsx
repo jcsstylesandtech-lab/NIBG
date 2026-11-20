@@ -1,5 +1,6 @@
 import { Hero, Intro, Cta, Explore } from "../components/Blocks.jsx";
 import { BusinessClock } from "../components/BusinessClock.jsx";
+import { Gallery } from "../components/Gallery.jsx";
 import { IMG, EVENT_FORMATS } from "../content.js";
 
 export default function Events() {
@@ -34,6 +35,8 @@ export default function Events() {
           </ul>
         </div>
       </section>
+
+      <Gallery />
 
       <Intro
         field="deep"

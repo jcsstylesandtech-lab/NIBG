@@ -318,3 +318,42 @@ html.pl-lock .hero-fig { opacity: 0; }
 .hero--bg .hero-h1 .on-low, .hero--bg .hero-text p { text-shadow: 0 2px 18px rgb(0 0 0 / .4), 0 1px 3px rgb(0 0 0 / .3); }
 @media (max-width: 900px) { .hero--bg .hero-fig { position: relative; z-index: 1; } }
 @media (max-width: 760px) { .hero-bg .cta-bg::after { background: color-mix(in srgb, var(--f-bg) 80%, transparent); } }
+
+/* ---------- Event gallery ----------
+   Masonry columns keep every photo at its natural shape; each tile is a soft
+   raised card that lifts on hover. The lightbox is a native <dialog>. */
+.gallery { columns: 3 280px; column-gap: 24px; }
+.gallery-item { break-inside: avoid; margin-bottom: 24px; }
+.gallery-btn { display: block; width: 100%; padding: 10px; text-align: left; cursor: zoom-in; color: inherit; }
+.gallery-frame { display: block; overflow: hidden; border-radius: var(--r-sm); max-width: 100%; background: var(--color-mist); }
+.gallery-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16,.84,.24,1); }
+.gallery-btn:hover .gallery-frame img, .gallery-btn:focus-visible .gallery-frame img { transform: scale(1.05); }
+.gallery-cap { display: block; padding: 12px 6px 4px; font-weight: 500; font-size: var(--step-body); line-height: 1.35; }
+
+.lightbox {
+  width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; border: 0;
+  padding: 56px max(80px, env(safe-area-inset-right, 0px)) 40px max(80px, env(safe-area-inset-left, 0px));
+  background: rgb(12 26 19 / .95); color: #fff;
+}
+.lightbox::backdrop { background: rgb(12 26 19 / .6); }
+.lightbox-fig { margin: 0; height: 100%; display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 16px; touch-action: pan-y; }
+.lightbox-img { max-width: 100%; max-height: calc(100dvh - 170px); width: auto; height: auto; object-fit: contain; border-radius: var(--r-sm); animation: lb-in .45s cubic-bezier(.16,.84,.24,1); }
+.lightbox-cap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; width: min(100%, 900px); font-size: var(--step-body); }
+.lightbox-btn {
+  position: fixed; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 999px;
+  background: rgb(255 255 255 / .12); color: #fff; font-size: 1.25rem; cursor: pointer;
+  box-shadow: 4px 4px 10px rgb(0 0 0 / .35), -3px -3px 8px rgb(255 255 255 / .06);
+  transition: background-color .2s ease, transform .2s ease;
+}
+.lightbox-btn:hover { background: rgb(255 255 255 / .22); transform: scale(1.06); }
+.lightbox-prev { left: max(16px, env(safe-area-inset-left, 0px)); top: 50%; translate: 0 -50%; }
+.lightbox-next { right: max(16px, env(safe-area-inset-right, 0px)); top: 50%; translate: 0 -50%; }
+.lightbox-close { right: max(16px, env(safe-area-inset-right, 0px)); top: calc(16px + env(safe-area-inset-top, 0px)); }
+@keyframes lb-in { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
+@media (max-width: 700px) {
+  .lightbox { padding: 64px 16px 96px; }
+  .lightbox-img { max-height: calc(100dvh - 220px); }
+  .lightbox-prev, .lightbox-next { top: auto; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); translate: none; }
+  .lightbox-prev { left: calc(50% - 64px); } .lightbox-next { right: calc(50% - 64px); }
+}
+@media (prefers-reduced-motion: reduce) { .lightbox-img { animation: none; } .gallery-frame img { transition: none; } }
