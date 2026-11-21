@@ -142,7 +142,7 @@ export function Header({ route }) {
 
 export function Footer() {
   return (
-    <footer data-field="deep" className="has-bg relative overflow-hidden">
+    <footer data-field="deep" className="has-bg footer-bg relative overflow-hidden">
       <SectionBg src={IMG.ctaContact} speed={-0.06} />
       <div className="wrap relative z-10 pt-24 pb-10">
         <p className="slide t-hero foot-name">{ORG.name}</p>

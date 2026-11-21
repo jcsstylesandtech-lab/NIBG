@@ -415,14 +415,14 @@ test.describe("smooth scrolling", () => {
   });
 });
 
-test("green and deep heroes have a background photo; red heroes and red sections never do", async ({ page }) => {
+test("every hero has a background photo; red content sections never do", async ({ page }) => {
   test.setTimeout(180000); // visits nine pages
-  const pages = { "": true, "#about": false, "#services": true, "#membership": false, "#events": true, "#impact": true, "#contact": true, "#privacy": true, "#terms": true };
+  const pages = { "": true, "#about": true, "#services": true, "#membership": true, "#events": true, "#impact": true, "#contact": true, "#privacy": true, "#terms": true };
   for (const [hash, expectBg] of Object.entries(pages)) {
     await open(page, `/${hash}`);
     await expect(page.locator(".hero .hero-bg")).toHaveCount(expectBg ? 1 : 0);
     // No section with the red field ever carries a background photo.
-    expect(await page.locator('section[data-field="red"] .cta-bg, .hero-bg[data-field="red"]').count()).toBe(0);
+    expect(await page.locator('section[data-field="red"] .cta-bg').count()).toBe(0);
   }
 });
 

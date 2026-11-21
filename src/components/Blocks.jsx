@@ -15,7 +15,7 @@ export function SectionBg({ src, pos = "50% 50%", speed = -0.1 }) {
  *  the left, crosses the seam and changes ink where it does. */
 export function Hero({ field = "green", lines, sentence, action, img, alt = "", imgPos = "50% 50%", bg }) {
   const [a, b] = lines;
-  const withBg = bg && field !== "red";   // red fields stay plain
+  const withBg = !!bg;   // red heroes included; red content sections stay plain
   const isLink = action.to?.startsWith("#");
   return (
     <section className={`hero${withBg ? " hero--bg" : ""}`} data-field="paper">

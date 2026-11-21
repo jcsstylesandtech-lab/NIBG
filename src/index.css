@@ -357,3 +357,7 @@ html.pl-lock .hero-fig { opacity: 0; }
   .lightbox-prev { left: calc(50% - 64px); } .lightbox-next { right: calc(50% - 64px); }
 }
 @media (prefers-reduced-motion: reduce) { .lightbox-img { animation: none; } .gallery-frame img { transition: none; } }
+
+/* Footer photo: shown at 5% opacity straight on the deep green, no tint layer. */
+.footer-bg .cta-bg::after { display: none; }
+.footer-bg .cta-bg img { opacity: .05; }

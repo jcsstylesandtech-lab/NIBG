@@ -11,6 +11,7 @@ export default function About() {
         action={{ label: "Our five principles", scroll: "principles" }}
         img={IMG.about}
         alt="Nigerian and Indonesian professionals shaking hands in a bright office"
+        bg={IMG.energy}
       />
 
       <Intro

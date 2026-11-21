@@ -11,6 +11,7 @@ export default function Membership() {
         action={{ label: "Enquire about membership", to: "#contact" }}
         img={IMG.membership}
         alt="Entrepreneurs talking over coffee in a members' lounge with patterned cushions"
+        bg={IMG.jakarta}
       />
 
       {/* TODO: add confirmed membership categories, fees and application steps. */}
