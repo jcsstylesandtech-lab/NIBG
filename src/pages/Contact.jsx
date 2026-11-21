@@ -4,7 +4,7 @@ import { BusinessClock } from "../components/BusinessClock.jsx";
 import { useConsent, setConsent } from "../components/Consent.jsx";
 import { IMG, ORG, MAP } from "../content.js";
 
-const UNAVAILABLE = "The form can’t send messages from this preview. It works once the site is on its host.";
+const UNAVAILABLE = `The form can’t send messages right now. Please email ${ORG.email} or call ${ORG.phone}.`;
 
 // Submissions go to the hosting platform's data SDK (window.dataSdk),
 // exactly as on the original site. Nothing is reported as sent unless the

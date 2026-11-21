@@ -2,6 +2,8 @@
 
 The website of the Nigerian Indonesian Business Group, built with React, Vite and Tailwind CSS.
 
+**Live:** https://jcsstylesandtech-lab.github.io/NIBG/ (GitHub Pages, served from the `gh-pages` branch)
+
 ## Run it
 
 Needs Node.js 20 or newer.
@@ -15,6 +17,20 @@ npm run preview    # serve the production build on http://localhost:4173
 
 Upload the contents of `dist/` to any static web host. Pages use hash links
 (`#about`, `#services` …), so no server routing setup is needed.
+
+## Redeploy to GitHub Pages
+
+```bash
+npm run build
+# copy dist/ to an empty folder, remove the /_sdk/ script tag from index.html
+# (it only exists on the original host), add an empty .nojekyll file, then:
+git init -b gh-pages && git add -A && git commit -m "Deploy"
+git push -f https://github.com/jcsstylesandtech-lab/NIBG.git gh-pages
+node scripts/check-live.mjs https://jcsstylesandtech-lab.github.io/NIBG/
+```
+
+On GitHub Pages the contact form shows the email and phone number instead of
+sending, because message storage only exists on the original hosting platform.
 
 ## Where things are
 

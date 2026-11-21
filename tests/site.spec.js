@@ -126,7 +126,7 @@ test("contact form validates and never claims a message was sent without the hos
   await page.fill("#email", "test@example.com");
   await page.fill("#message", "Hello from the test suite.");
   await page.getByRole("button", { name: /Send message/ }).click();
-  await expect(page.getByTestId("form-status")).toHaveText(/can’t send messages from this preview/);
+  await expect(page.getByTestId("form-status")).toHaveText(/can’t send messages right now.*info@nigeriaindonesiabusinessgroup\.com/);
   await expect(page.getByTestId("form-status")).not.toHaveText(/received/);
 });
 
