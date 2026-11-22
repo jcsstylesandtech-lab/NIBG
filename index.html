@@ -39,10 +39,6 @@
       .pl-word span:nth-child(3) { animation-delay: .91s; } .pl-word span:nth-child(4) { animation-delay: .99s; }
       .pl-name { margin: 0; font-size: clamp(.95rem, 1.6vw, 1.1rem); font-weight: 500; color: #34433b; text-align: center; padding-inline: 16px;
         animation: pl-fade .9s ease 1.15s both; }
-      .pl-foot { position: absolute; left: max(16px, 4vw); right: max(16px, 4vw); bottom: max(24px, 5vh); display: flex; justify-content: space-between; align-items: baseline;
-        font-weight: 500; color: #34433b; animation: pl-fade .6s ease .4s both; }
-      .pl-count { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; color: #007a43; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
-      .pl-count::after { content: "%"; font-size: .45em; margin-left: .15em; color: #34433b; }
       .pl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
       @keyframes pl-disc-in { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
       @keyframes pl-green { from { transform: rotate(-160deg) scale(.7); opacity: 0; } to { transform: none; opacity: 1; } }
@@ -52,12 +48,11 @@
       @keyframes pl-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
       /* Exit: the content draws in, then the two halves part like the hero seam. */
       #preloader.is-done .pl-stage { opacity: 0; transform: scale(.92); }
-      #preloader.is-done .pl-foot { opacity: 0; transition: opacity .3s ease; }
       #preloader.is-done .pl-top { transform: translateY(-100%); }
       #preloader.is-done .pl-bot { transform: translateY(100%); }
       html.pl-lock, html.pl-lock body { overflow: hidden; }
       @media (prefers-reduced-motion: reduce) {
-        .pl-disc, .pl-mark, .pl-g, .pl-r, .pl-word span, .pl-name, .pl-foot { animation: none; }
+        .pl-disc, .pl-mark, .pl-g, .pl-r, .pl-word span, .pl-name { animation: none; }
         .pl-half, .pl-stage { transition: opacity .3s ease; }
         #preloader.is-done { opacity: 0; transition: opacity .3s ease; }
         #preloader.is-done .pl-top, #preloader.is-done .pl-bot { transform: none; }
@@ -79,19 +74,17 @@
         <div class="pl-word"><span>N</span><span>I</span><span>B</span><span>G</span></div>
         <p class="pl-name">Nigerian Indonesian Business Group</p>
       </div>
-      <div class="pl-foot" aria-hidden="true"><span class="pl-count">000</span><span>Lagos · Jakarta</span></div>
     </div>
     <script>
-      // Counter follows real loading (page, fonts, the hero photo), never
-      // finishes before the build animation has played, and gives up after
-      // 5 seconds so a slow image can't hold the page hostage.
+      // Waits for real loading (page, fonts, the hero photo), never finishes
+      // before the build animation has played, and gives up after 5 seconds
+      // so a slow image can't hold the page hostage.
       (function () {
         var root = document.documentElement, pl = document.getElementById("preloader");
         if (!pl) return;
         root.classList.add("pl-lock");
-        var count = pl.querySelector(".pl-count");
         var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        var MIN = reduce ? 500 : 2300, MAX = 5000, t0 = performance.now(), shown = 0, ready = false, done = false;
+        var MIN = reduce ? 500 : 2300, MAX = 5000, t0 = performance.now(), ready = false, done = false;
         var loaded = new Promise(function (r) { document.readyState === "complete" ? r() : window.addEventListener("load", r); });
         Promise.all([loaded, document.fonts ? document.fonts.ready : null]).then(function () {
           var img = document.querySelector(".hero-fig img");
@@ -100,20 +93,13 @@
         function go() { ready = true; }
         function finish() {
           if (done) return; done = true;
-          count.textContent = "100";
           pl.classList.add("is-done");
           setTimeout(function () { root.classList.remove("pl-lock"); window.dispatchEvent(new Event("nibg:ready")); }, 300);
           setTimeout(function () { pl.remove(); }, 1400);
         }
         function tick(now) {
           var t = now - t0;
-          // Never ahead of the build animation; never ahead of real loading.
-          var timeCap = 100 * Math.min(1, t / MIN);
-          var target = ready ? timeCap : Math.min(timeCap, 88 * (1 - Math.exp(-t / 900)));
-          shown += (target - shown) * 0.08;
-          if (ready && t >= MIN && shown > 99) shown = 100;
-          count.textContent = ("00" + Math.min(99, Math.floor(shown))).slice(-3);
-          if (shown >= 100 || t > MAX) return finish();
+          if ((ready && t >= MIN) || t > MAX) return finish();
           requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
