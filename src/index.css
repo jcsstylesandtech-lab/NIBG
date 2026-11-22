@@ -370,3 +370,6 @@ html.pl-lock .hero-fig { opacity: 0; }
 .cta--photo h2, .cta--photo p, .has-bg h2, .has-bg p { text-shadow: none; }
 .has-bg .band { background: var(--f-band); }
 .has-bg .band:nth-child(even) { background: var(--f-band2); }
+
+/* Hero buttons are always brand red with white text, whatever the hero colour. */
+.hero .btn { --f-btn: var(--color-red); --f-btn-ink: #fff; }
