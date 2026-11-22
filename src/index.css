@@ -358,6 +358,11 @@ html.pl-lock .hero-fig { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .lightbox-img { animation: none; } .gallery-frame img { transition: none; } }
 
-/* Footer photo: shown at 5% opacity straight on the deep green, no tint layer. */
-.footer-bg .cta-bg::after { display: none; }
-.footer-bg .cta-bg img { opacity: .05; }
+/* Every background photo outside the hero (sections, closing CTA, footer):
+   shown at 5% opacity straight on the section's own colour, no tint layer.
+   Hero photos (.hero-bg) keep their full photo and tinted overlay. */
+:not(.hero-bg) > .cta-bg::after { display: none; }
+:not(.hero-bg) > .cta-bg img { opacity: .05; }
+.cta--photo h2, .cta--photo p, .has-bg h2, .has-bg p { text-shadow: none; }
+.has-bg .band { background: var(--f-band); }
+.has-bg .band:nth-child(even) { background: var(--f-band2); }
