@@ -165,8 +165,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .hero-h1 { width: calc(100% - 2 * var(--gutter)); }
   .hero-low-in { padding-top: calc(var(--step-hero) * .63 + 28px); min-height: 0; padding-bottom: 40px; }
   .hero-text { max-width: 34rem; }
-  .hero-fig { position: relative; top: auto; right: auto; width: auto; aspect-ratio: 16 / 10; margin: 0 var(--gutter) 0; }
-  .hero-low { padding-bottom: 40px; }
+  /* Bigger on tablets and phones: taller frame, edge to edge. */
+  .hero-fig { position: relative; top: auto; right: auto; width: auto; aspect-ratio: 4 / 3; margin: 0; border-radius: 0; box-shadow: none; }
+  .hero-low { padding-bottom: 0; }
+}
+@media (max-width: 600px) {
+  .hero-fig { aspect-ratio: 1 / 1; }
 }
 
 /* Statement fields */
