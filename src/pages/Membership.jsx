@@ -5,7 +5,7 @@ export default function Membership() {
   return (
     <>
       <Hero
-        field="red"
+        field="green"
         lines={["Join the", "alliance."]}
         sentence="For businesses, investors, project promoters, industry associations and institutions working between Nigeria and Indonesia."
         action={{ label: "Enquire about membership", to: "#contact" }}

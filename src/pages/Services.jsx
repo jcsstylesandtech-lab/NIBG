@@ -66,7 +66,7 @@ export default function Services() {
   return (
     <>
       <Hero
-        field="deep"
+        field="green"
         lines={["Open doors.", "Close deals."]}
         sentence="A platform for businesses, investors and institutions to identify opportunities, establish partnerships and expand into new markets."
         action={{ label: "See what we offer", scroll: "services-list" }}

@@ -23,7 +23,7 @@ export default function Privacy() {
   return (
     <>
       <Hero
-        field="deep"
+        field="green"
         lines={["Your privacy,", "plainly put."]}
         sentence="What this website collects, why, and the choices you have. We collect very little."
         action={{ label: "Read the policy", scroll: "policy" }}

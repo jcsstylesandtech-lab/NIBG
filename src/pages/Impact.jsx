@@ -18,7 +18,7 @@ export default function Impact() {
   return (
     <>
       <Hero
-        field="deep"
+        field="green"
         lines={["From talk", "to trade."]}
         sentence="Turning introductions into bankable projects, commercial partnerships, jobs and long-term economic value."
         action={{ label: "See the pathway", scroll: "pathway" }}

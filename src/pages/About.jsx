@@ -5,7 +5,7 @@ export default function About() {
   return (
     <>
       <Hero
-        field="red"
+        field="green"
         lines={["Built on", "trust."]}
         sentence="A bilateral business platform established to strengthen economic relations between Nigeria and the Republic of Indonesia."
         action={{ label: "Our five principles", scroll: "principles" }}
