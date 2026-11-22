@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Nigerian Indonesian Business Group</title>
+    <meta name="description" content="NIBG connects Nigerian and Indonesian businesses, investors and institutions through trade, investment and strategic partnerships." />
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="./img/icon-512.png" />
+    <link rel="apple-touch-icon" href="./img/apple-touch-icon.png" />
+    <meta name="theme-color" content="#007a43" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" as="image" href="./img/mark-green.png" />
+    <link rel="preload" as="image" href="./img/mark-red.png" />
+
+    <!-- Preloader: lives here, not in React, so it shows on the very first
+         paint. The two arrows of the logo sweep in and lock, the letters rise,
+         the counter follows real loading, then the screen splits open. -->
+    <style>
+      #preloader { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; color: #0c1a13;
+        font-family: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        animation: pl-failsafe 0s linear 7s forwards; }
+      @keyframes pl-failsafe { to { visibility: hidden; opacity: 0; } }
+      .pl-half { position: absolute; left: 0; right: 0; height: 50.5%; background: #f2f5f3; transition: transform 1s cubic-bezier(.76,0,.24,1) .25s; }
+      .pl-top { top: 0; } .pl-bot { bottom: 0; }
+      .pl-stage { position: relative; display: grid; justify-items: center; gap: 22px; transition: opacity .45s ease, transform .6s cubic-bezier(.76,0,.24,1); }
+      .pl-disc { position: relative; width: clamp(150px, 26vw, 210px); aspect-ratio: 1; border-radius: 50%; background: #f2f5f3;
+        box-shadow: 12px 12px 28px #c9d0cb, -12px -12px 28px #ffffff; display: grid; place-items: center;
+        animation: pl-disc-in .9s cubic-bezier(.2,.8,.2,1) both; }
+      .pl-mark { position: relative; width: 68%; aspect-ratio: 1; animation: pl-spin 7s linear 1.2s infinite; }
+      .pl-mark img { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .pl-g { animation: pl-green 1.15s cubic-bezier(.22,1.2,.36,1) .15s both; }
+      .pl-r { animation: pl-red 1.15s cubic-bezier(.22,1.2,.36,1) .3s both; }
+      .pl-word { display: flex; gap: .02em; font-weight: 700; font-size: clamp(2.6rem, 6vw, 3.6rem); letter-spacing: .04em; line-height: 1; overflow: hidden; padding-bottom: 4px; }
+      .pl-word span { display: inline-block; animation: pl-rise .8s cubic-bezier(.2,.8,.2,1) both; }
+      .pl-word span:nth-child(1) { animation-delay: .75s; } .pl-word span:nth-child(2) { animation-delay: .83s; }
+      .pl-word span:nth-child(3) { animation-delay: .91s; } .pl-word span:nth-child(4) { animation-delay: .99s; }
+      .pl-name { margin: 0; font-size: clamp(.95rem, 1.6vw, 1.1rem); font-weight: 500; color: #34433b; text-align: center; padding-inline: 16px;
+        animation: pl-fade .9s ease 1.15s both; }
+      .pl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+      @keyframes pl-disc-in { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+      @keyframes pl-green { from { transform: rotate(-160deg) scale(.7); opacity: 0; } to { transform: none; opacity: 1; } }
+      @keyframes pl-red { from { transform: rotate(160deg) scale(.7); opacity: 0; } to { transform: none; opacity: 1; } }
+      @keyframes pl-spin { to { transform: rotate(360deg); } }
+      @keyframes pl-rise { from { transform: translateY(110%); } to { transform: none; } }
+      @keyframes pl-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+      /* Exit: the content draws in, then the two halves part like the hero seam. */
+      #preloader.is-done .pl-stage { opacity: 0; transform: scale(.92); }
+      #preloader.is-done .pl-top { transform: translateY(-100%); }
+      #preloader.is-done .pl-bot { transform: translateY(100%); }
+      html.pl-lock, html.pl-lock body { overflow: hidden; }
+      @media (prefers-reduced-motion: reduce) {
+        .pl-disc, .pl-mark, .pl-g, .pl-r, .pl-word span, .pl-name { animation: none; }
+        .pl-half, .pl-stage { transition: opacity .3s ease; }
+        #preloader.is-done { opacity: 0; transition: opacity .3s ease; }
+        #preloader.is-done .pl-top, #preloader.is-done .pl-bot { transform: none; }
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-BBI2oimc.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DFQ_pSuL.css">
+  </head>
+  <body>
+    <div id="preloader" role="status">
+      <span class="pl-sr">Loading the Nigerian Indonesian Business Group website</span>
+      <div class="pl-half pl-top" aria-hidden="true"></div>
+      <div class="pl-half pl-bot" aria-hidden="true"></div>
+      <div class="pl-stage" aria-hidden="true">
+        <div class="pl-disc">
+          <div class="pl-mark">
+            <img class="pl-g" src="./img/mark-green.png" alt="" width="480" height="480" />
+            <img class="pl-r" src="./img/mark-red.png" alt="" width="480" height="480" />
+          </div>
+        </div>
+        <div class="pl-word"><span>N</span><span>I</span><span>B</span><span>G</span></div>
+        <p class="pl-name">Nigerian Indonesian Business Group</p>
+      </div>
+    </div>
+    <script>
+      // Waits for real loading (page, fonts, the hero photo), never finishes
+      // before the build animation has played, and gives up after 5 seconds
+      // so a slow image can't hold the page hostage.
+      (function () {
+        var root = document.documentElement, pl = document.getElementById("preloader");
+        if (!pl) return;
+        root.classList.add("pl-lock");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var MIN = reduce ? 500 : 2300, MAX = 5000, t0 = performance.now(), ready = false, done = false;
+        var loaded = new Promise(function (r) { document.readyState === "complete" ? r() : window.addEventListener("load", r); });
+        Promise.all([loaded, document.fonts ? document.fonts.ready : null]).then(function () {
+          var img = document.querySelector(".hero-fig img");
+          if (img && !img.complete) { img.addEventListener("load", go); img.addEventListener("error", go); } else go();
+        });
+        function go() { ready = true; }
+        function finish() {
+          if (done) return; done = true;
+          pl.classList.add("is-done");
+          setTimeout(function () { root.classList.remove("pl-lock"); window.dispatchEvent(new Event("nibg:ready")); }, 300);
+          setTimeout(function () { pl.remove(); }, 1400);
+        }
+        function tick(now) {
+          var t = now - t0;
+          if ((ready && t >= MIN) || t > MAX) return finish();
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      })();
+    </script>
+    <div id="root"></div>
+    <!-- Hosting platform data SDK: saves contact-form messages. Served only by the live host. -->
+  </body>
+</html>
